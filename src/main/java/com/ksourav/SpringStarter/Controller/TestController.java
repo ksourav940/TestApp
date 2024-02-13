@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ksourav.SpringStarter.models.Test;
 import com.ksourav.SpringStarter.services.TestService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -43,11 +42,26 @@ public String getTestById(@PathVariable Long testCode, Model model) {
   }else{
     return "404";
   }
-
     
 }
 
+// @GetMapping("/testPanel/{testCode}") 
+// public String startTest(@PathVariable Long testCode,Model model){
+//   Optional<Test> optionalTest = testService.getById(testCode); 
+//   if(optionalTest.isPresent()){
+//     Test test = optionalTest.get();
+//     model.addAttribute("test", test);
+//     return "testPanel";
 
+//   }else{
+//     return "404";
+//   }
+// }
+
+//  @PostMapping("/testPanel/{testCode}")
+//  public String start_test(@PathVariable Long testCode,Model model) { 
+//      return "redirect:/testPanel";
+//  }
 
 
    

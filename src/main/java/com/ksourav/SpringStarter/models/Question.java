@@ -26,8 +26,10 @@ public class Question {
 
     private String questionName;
 
-    @OneToMany(mappedBy = "question")
-    private List<Qoption> options;
+    @OneToMany(mappedBy ="question")
+    private List<Qoption> qoptions;
+
+    
 
       @ManyToOne
     @JoinColumn(name="testCode", referencedColumnName = "testCode",nullable = true)

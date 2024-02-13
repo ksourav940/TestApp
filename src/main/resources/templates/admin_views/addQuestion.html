@@ -8,7 +8,7 @@
 <body>
 
   <!-- ======= Top Bar ======= -->
-  <!-- <section id="topbar" class="d-flex align-items-center">
+  <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">testapp@gmail.com</a>
@@ -21,32 +21,42 @@
         <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
       </div>
     </div>
-  </section> -->
+  </section>
 
   <!-- ======= Header ======= -->
   <!-- <header th:replace="/fragments/header :: header"> -->
-    <!-- <div th:replace="/fragments/header :: header"></div> -->
+    <div th:replace="/fragments/header :: header"></div>
 
  <!-- End Header -->
   
   <main id="main">
-    <section class="breadcrumbs">
-      <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Profile Page</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Profile Page</li>
-          </ol>
-        </div>
-
-      </div>
-    </section>
     <section id="featured-services" class="featured-services section-bg">
       <div class="container">
-          welcome
-      </div>
+        <table class="table">
+          <thead>
+            <tr scope="row" class="tests" th:each="showtest : ${showtest}">
+              <th scope="col"  th:text="${showtest.testName}">Test Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr scope="row" class="tests" th:each="question : ${showtest.questions}">
+              <!-- <td th:text="${question.questionName}" />  -->
+              <td><a th:href="@{'/admin/' + ${showtest.testCode} + '/addQuestion/'+ ${question.questionId} + '/addOption'}"  th:text="${question.questionName}">title</a></td> 
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <form th:method="post" 
+               th:action="@{addQuestion}"
+               th:object="${question}"
+               >
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Question Name</label>
+            <input type="text" class="form-control" id="testName"  th:field="*{questionName}"  placeholder="Test Name">
+          </div>
+          <button type="submit" class="btn btn-primary">Add Test</button>
+        </form>
+          </div>
     </section>
   </main>
   <!-- End #main -->

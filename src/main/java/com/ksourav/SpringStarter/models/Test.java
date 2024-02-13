@@ -29,6 +29,15 @@ public class Test {
 
     private String testName ;
 
+    private String testDecs ;
+
+    private String noOfQuestion;
+
+    private String timeDuration;
+
+    private float testFullMarks;
+
+
     @OneToMany(mappedBy ="test")
     private List<Question> questions;
 
@@ -37,6 +46,8 @@ public class Test {
     @ManyToOne
     @JoinColumn(name="account_id", referencedColumnName = "id",nullable = true)
     private Account account;
+
+    
 
    
  
