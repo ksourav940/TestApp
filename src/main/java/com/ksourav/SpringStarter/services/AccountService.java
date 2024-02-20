@@ -36,6 +36,9 @@ public class AccountService implements UserDetailsService{
       return  accountRepository.save(account);
     }
 
+  
+
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
       Optional<Account>   optionalAccount = accountRepository.findOneByEmailIgnoreCase(email);
@@ -43,7 +46,7 @@ public class AccountService implements UserDetailsService{
       throw new UnsupportedOperationException("Account is not found");
       }  
       Account account = optionalAccount.get();
-
+  
       List<GrantedAuthority> grantedAuthority = new ArrayList<>();
       grantedAuthority.add(new SimpleGrantedAuthority(account.getRole())); 
 

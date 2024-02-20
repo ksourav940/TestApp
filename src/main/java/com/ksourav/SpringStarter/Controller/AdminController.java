@@ -69,34 +69,34 @@ public class AdminController {
     }
   }
 
-  @GetMapping("/admin/{testCode}/addQuestion/{questionId}/addOption")
-  public String addOption(@PathVariable Long questionId, Model model) {
-    Optional<Question> optionalQuestiion = adminService.getQuestionById(questionId);
+  // @GetMapping("/admin/{testCode}/addQuestion/{questionId}/addOption")
+  // public String addOption(@PathVariable Long questionId, Model model) {
+  //   Optional<Question> optionalQuestiion = adminService.getQuestionById(questionId);
 
-    if (optionalQuestiion.isPresent()) {
+  //   if (optionalQuestiion.isPresent()) {
      
-      Qoption qoption = new Qoption();
-      model.addAttribute("qoption",qoption);
-      Question showquestion = optionalQuestiion.get();
-      model.addAttribute("showquestion", showquestion);
-      return "admin_views/addOption";
+  //     Qoption qoption = new Qoption();
+  //     model.addAttribute("qoption",qoption);
+  //     Question showquestion = optionalQuestiion.get();
+  //     model.addAttribute("showquestion", showquestion);
+  //     return "admin_views/addOption";
 
-    } else {
-      return "404";
-    }
-  }
+  //   } else {
+  //     return "404";
+  //   }
+  // }
 
-  @PostMapping("/admin/{testCode}/addQuestion/{questionId}/addOption")
-  public String addOption(@PathVariable Long questionId, @ModelAttribute Qoption _qoption) {
-  //  System.out.println("hellow world" + testCode);
-    if (_qoption.getOptionName() != "") {
-      _qoption.setQuestion(adminService.getQuestionById(questionId).get());
-      adminService.saveQoption(_qoption);
-      return "redirect:/admin/{testCode}/addQuestion/{questionId}/addOption";
-    } else {
-      return "redirect:/admin/{testCode}/addQuestion/{questionId}/addOption";
-    }
-  }
+  // @PostMapping("/admin/{testCode}/addQuestion/{questionId}/addOption")
+  // public String addOption(@PathVariable Long questionId, @ModelAttribute Qoption _qoption) {
+  // //  System.out.println("hellow world" + testCode);
+  //   if (_qoption.getOptionName() != "") {
+  //     _qoption.setQuestion(adminService.getQuestionById(questionId).get());
+  //     adminService.saveQoption(_qoption);
+  //     return "redirect:/admin/{testCode}/addQuestion/{questionId}/addOption";
+  //   } else {
+  //     return "redirect:/admin/{testCode}/addQuestion/{questionId}/addOption";
+  //   }
+  // }
 
   @DeleteMapping("/admin")
   public String removeTest(@ModelAttribute Test test) {

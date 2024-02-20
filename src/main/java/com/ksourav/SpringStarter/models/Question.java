@@ -1,6 +1,5 @@
 package com.ksourav.SpringStarter.models;
 
-
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -26,10 +25,20 @@ public class Question {
 
     private String questionName;
 
-    @OneToMany(mappedBy ="question")
-    private List<Qoption> qoptions;
+    // @OneToMany(mappedBy ="question")
+    // private List<Qoption> qoptions;
 
+    private String optionA;
+
+    private String optionB;
+
+    private String optionC;
+
+    private String optionD;
+
+    private String correctAnswer;
     
+
 
       @ManyToOne
     @JoinColumn(name="testCode", referencedColumnName = "testCode",nullable = true)
