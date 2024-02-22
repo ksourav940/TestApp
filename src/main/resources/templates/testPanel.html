@@ -21,32 +21,28 @@
   <main id="main">
     <section id="featured-services" class="featured-services section-bg">
       <div class="container">
-        <div>
-          <form th:object="${testPanel}" method="post">
-            <fieldset>
-              <ul>
-                <li th:each="question : ${test.questions}">
-                  <label th:text="${question.questionName}"></label><BR>
-                  <input type="radio" th:id="'optionA_' + ${question.questionId}" th:name="'question_' + ${question.questionId}" 
-                  th:field="${testPanel.answer}" 
-                  th:value="A" />
-                  <label th:for="'optionA_' + ${question.questionId}" th:text="${question.optionA}"></label><BR>
+        
+            <form th:object="${test}" method="post">
+              <div th:each="question, qcount : *{questions}" >
+                <label th:text="${question.questionId}+ ' '+ ${question.questionName}"></label><BR>
+           
 
-                    <input type="radio" th:id="'optionB_' + ${question.questionId}" th:name="'question_' + ${question.questionId}"  th:value="B" />
-                  <label th:for="'optionB_' + ${question.questionId}" th:text="${question.optionB}"></label><BR>
+                  <input th:type="radio" id="${question.questionId}+${question.optionA}" th:name="${question.questionId}" th:field="*{questions[__${qcount.index}__].correctAnswer}"  th:value="${question.optionA}"  />
+                <label th:for="${question.questionId}+${question.optionA}" th:text="${question.optionA}">A</label><BR>
 
-                    <input type="radio" th:id="'optionC_' + ${question.questionId}" th:name="'question_' + ${question.questionId}"  th:value="C" />
-                  <label th:for="'optionC_' + ${question.questionId}" th:text="${question.optionC}"></label><BR>
+                  <input th:type="radio"  id="${question.questionId}+${question.optionB}"  th:name="${question.questionId}" th:field="*{questions[__${qcount.index}__].correctAnswer}" th:value="${question.optionB}" />
+                  <label th:for="${question.questionId}+${question.optionB}" th:text="${question.optionB}">B</label><BR>
 
-                    <input type="radio" th:id="'optionD_' + ${question.questionId}" th:name="'question_' + ${question.questionId}"  th:value="D" />
-                  <label th:for="'optionC_' + ${question.questionId}" th:text="${question.optionD}"></label><BR>
-                </li>
-              </ul>
-            </fieldset>
-            <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+                    <input th:type="radio"   id="${question.questionId} + ${question.optionC}" th:name="${question.questionId}" th:field="*{questions[__${qcount.index}__].correctAnswer}" th:value="${question.optionC}"  />
+                    <label th:for="${question.questionId} + ${question.optionC}" th:text="${question.optionC}">C</label><BR>
+
+                      <input th:type="radio"  id="${question.questionId} + ${question.optionD}"  th:name="${question.questionId}" th:field="*{questions[__${qcount.index}__].correctAnswer}" th:value="${question.optionD}" />
+                      <label th:for="${question.questionId} + ${question.optionD}" th:text="${question.optionD}">D</label><BR>
+              </div>
+            <p><input type="submit" value="submit" /></p>
           </form>
 
-        </div>
+        
       </div>
     </section>
   </main>

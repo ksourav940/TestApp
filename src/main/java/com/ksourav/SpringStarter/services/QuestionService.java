@@ -24,6 +24,8 @@ public class QuestionService {
         return questionRepository.findAll();
     }
 
+   
+
     public void delete(Question question){
         questionRepository.delete(question);
     }
