@@ -34,8 +34,16 @@ public class TestPanelController {
     Optional<Test> optionalTest = testService.getById(testCode);
     if (optionalTest.isPresent()) {
       Test test = optionalTest.get();
+      for(int i=0;i< test.getQuestions().size();i++){
+        // System.out.println(test.getQuestions().size());
+  
+        System.out.println("test "+ test.toSting() +" question "+ test.getQuestions().get(i));
+        // questionService.save(test.getQuestions().get(i));
+      }
       model.addAttribute("test", test);
-      // model.addAttribute("answerset", answerset);
+      CreateAnswerDto createAnswerDto = new CreateAnswerDto();
+
+      model.addAttribute("createAnswerDto", createAnswerDto);
       return "testPanel";
 
     } else {
@@ -45,6 +53,17 @@ public class TestPanelController {
 
   @PostMapping("/testPanel/{testCode}")
   public String start_Test(@ModelAttribute Test test, Model model) {
+
+    Optional<Test> test1 = testService.getById(test.getTestCode());
+    if(test1.isPresent()){
+      Test test2 = test1.get();
+      for(int i=0;i< test2.getQuestions().size();i++){
+        System.out.println("test "+ test.toSting() +" question "+ test.getQuestions().get(i));
+        test2.getQuestions().get(i).setCorrectAnswer(test.getQuestions().get(i).getCorrectAnswer());
+        System.out.println("test "+ test2.toSting() +" question "+ test2.getQuestions().get(i));
+        questionService.save(test2.getQuestions().get(i));
+      }
+    }
 
     return "redirect:/testPanel/{testCode}";
 

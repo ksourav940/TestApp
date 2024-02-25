@@ -4,6 +4,7 @@ package com.ksourav.SpringStarter.models;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -36,8 +37,7 @@ public class Test {
     private String timeDuration;
 
     private float testFullMarks;
-
-
+ 
     @OneToMany(mappedBy ="test")
     private List<Question> questions;
 

@@ -42,5 +42,8 @@ public class Question {
     @JoinColumn(name="testCode", referencedColumnName = "testCode",nullable = true)
     private Test test; 
 
+    public String toString(){
+      return questionId +" "+questionName+" " +optionA+" "+ optionB+""+ optionC+" "+ optionD+" "+ correctAnswer;
+    }
 
 }
