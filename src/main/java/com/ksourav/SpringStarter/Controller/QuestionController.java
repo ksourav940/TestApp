@@ -1,6 +1,5 @@
 package com.ksourav.SpringStarter.Controller;
 
-import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

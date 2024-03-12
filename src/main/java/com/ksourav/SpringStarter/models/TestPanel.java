@@ -23,12 +23,5 @@ public class TestPanel {
     private Date testStartTime;
 
     private Date testEndTime;
-    
-    // @OneToMany(mappedBy="testPanel")
-    // private List<Answer> answer;
-
-   
-
-    
-    
+ 
 }

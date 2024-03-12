@@ -22,12 +22,12 @@ public class HomeController {
 
         List<Test> tests = testService.getAll();
         model.addAttribute("tests", tests);        
-        return "home";
+        return "home_views/home";
     }
 
      @GetMapping("/about")
     public String about(Model model){
-        return "about";
+        return "home_views/about";
     }
 
      @GetMapping("/service")

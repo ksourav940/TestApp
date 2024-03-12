@@ -12,8 +12,5 @@ import com.ksourav.SpringStarter.models.Account;
 public interface AccountRepository extends JpaRepository<Account,Long>{
 
     Optional<Account> findOneByEmailIgnoreCase(String email);
-
-    
-
     
 }

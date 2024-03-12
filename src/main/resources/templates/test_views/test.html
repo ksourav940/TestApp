@@ -33,7 +33,7 @@
     
     <section id="featured-services" class="featured-services section-bg">
       <div class="container">
-        <div>
+        <!-- <div>
           <table class="table">
             <thead>
               <tr>
@@ -47,13 +47,22 @@
               </tr>
             </tbody>
           </table>
+        </div> -->
+        <div >
+          <h3 class="tests" th:text="${test.testName}"></h3>
+          <ul>
+            <li th:text="'Description:  '+ ${test.testDecs}">Description:</li>
+            <li th:text="'No Of Question: ' +${test.noOfQuestion}"></li>
+            <li th:text="'Time Duration:  '+ ${test.timeDuration} +' min'"></li>
+            <li th:text="'Full Marks: '+ ${test.testFullMarks}"></li>
+          </ul>
         </div>
         <div>
           <form action="#"
-          th:action="@{/testPanel}"
+         
           th:object="${test}"
           th:method="post">
-            <button type="submit" class="btn btn-primary"><a th:href="@{'/testPanel/' + ${test.testCode}}">Start Test</a></button>
+            <button type="submit" class="btn btn-primary">Start Test</button>
           </form>
         </div>
       </div>

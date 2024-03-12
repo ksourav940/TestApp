@@ -27,7 +27,7 @@ public class AdminController {
     Test test = new Test();
     model.addAttribute("test", test);
     model.addAttribute("listoftest", adminService.getAll());
-    return "admin";
+    return "admin_views/admin";
   }
 
   @PostMapping("/admin")
@@ -61,7 +61,7 @@ public class AdminController {
   public String addQuestion(@PathVariable Long testCode, @ModelAttribute Question _question) {
     System.out.println("hellow world" + testCode);
     if (_question.getQuestionName() != "") {
-      _question.setTest(adminService.getById(testCode).get());
+      // _question.setTest(adminService.getById(testCode).get());
       adminService.saveQuestion(_question);
       return "redirect:/admin/{testCode}/addQuestion";
     } else {

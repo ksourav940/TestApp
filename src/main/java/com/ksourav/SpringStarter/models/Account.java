@@ -1,7 +1,7 @@
 package com.ksourav.SpringStarter.models;
 
+import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -11,7 +11,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,10 +28,12 @@ public class Account{
     private String  password;
     private String  firstname;
     private String  lastname;
+    private String  gender;
+    private int age;
+    private LocalDate date_of_birth;
+    private String photo;
     private String  role;
 
-    @OneToMany(mappedBy = "account")
-    private List<Test> tests;
 
     @ManyToMany
     @JoinTable(

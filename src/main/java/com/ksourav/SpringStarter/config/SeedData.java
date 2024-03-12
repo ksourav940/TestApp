@@ -91,13 +91,22 @@ public class SeedData implements CommandLineRunner {
         if (tests.size() == 0) {
             Test test01 = new Test();
             test01.setTestName("Java");
-            test01.setAccount(account01);
+            test01.setTestDecs("Java test for beginer");
+            test01.setNoOfQuestion(10);
+            test01.setTestFullMarks(10);
+            test01.setTimeDuration("10");
+            
+            // test01.setAccount(account01);
 
             testService.save(test01);
 
             Test test02 = new Test();
             test02.setTestName("Python");
-            test02.setAccount(account02);
+            test02.setTestDecs("Java test for beginer");
+            test02.setNoOfQuestion(10);
+            test02.setTestFullMarks(10);
+            test02.setTimeDuration("10");
+            // test02.setAccount(account02);
 
             testService.save(test02);
 
@@ -111,7 +120,7 @@ public class SeedData implements CommandLineRunner {
                 question01.setOptionC("third option");
                 question01.setOptionD("forth option");
               //  question01.setCorrectAnswer("forth option");
-                question01.setTest(test01);
+                // question01.setTest(test01);
                 questionService.save(question01);
 
                 Question question02 = new Question();
@@ -122,7 +131,7 @@ public class SeedData implements CommandLineRunner {
                 question02.setOptionD("forth option");
             //    question02.setCorrectAnswer("forth option");
 
-                question02.setTest(test01);
+                // question02.setTest(test01);
                 questionService.save(question02);
 
                 // Question question03 = new Question();
@@ -142,7 +151,7 @@ public class SeedData implements CommandLineRunner {
                 question05.setOptionC("third option");
                 question05.setOptionD("forth option");
              //   question05.setCorrectAnswer("forth option");
-                question05.setTest(test02);
+                // question05.setTest(test02);
                 questionService.save(question05);
 
                 Question question06 = new Question();
@@ -152,7 +161,7 @@ public class SeedData implements CommandLineRunner {
                 question06.setOptionC("third option");
                 question06.setOptionD("forth option");
                //    question06.setCorrectAnswer("forth option");
-                question06.setTest(test02);
+                // question06.setTest(test02);
                 questionService.save(question06);
 
                 // Question question07 = new Question();

@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,9 +21,6 @@ public class Question {
 
     private String questionName;
 
-    // @OneToMany(mappedBy ="question")
-    // private List<Qoption> qoptions;
-
     private String optionA;
 
     private String optionB;
@@ -36,12 +31,6 @@ public class Question {
 
     private String correctAnswer;
     
-
-
-      @ManyToOne
-    @JoinColumn(name="testCode", referencedColumnName = "testCode",nullable = true)
-    private Test test; 
-
     public String toString(){
       return questionId +" "+questionName+" " +optionA+" "+ optionB+""+ optionC+" "+ optionD+" "+ correctAnswer;
     }

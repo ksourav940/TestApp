@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{/fragments/head :: head}"></div>
+
+
+<body>
+  <!-- ======= Header ======= -->
+  <div th:replace="~{/fragments/header :: header}"></div>
+  <!-- End Header -->
+
+  <main id="main">
+    <section< id="featured-services" class="featured-services section-bg">
+      <div class="container">
+        <div class="heading_container">
+          <h4>Profile</h4>
+          <img th:src="@{${photo}}" class="rounded-circle"
+            style="width: 150px; float: left; padding: 10px 10px 10px 10px;" alt="Avatar" />
+          <p th:text="${error}" th:if="${error ne null}" class="alart alart-denger"></p>
+          <!-- <p th:text="${message}" th:if="${message ne null}" class="alart alart-denger"></p> -->
+          <form method="post" th:action="@{/update_photo}" enctype="multipart/form-data">
+            <div class="form-group">
+              <input type="file" name="file" class="form-control-file">
+            </div>
+            <button type="submit" class="btn btn-primary">Update photo</button>
+          </form>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form_container">
+              <form action="#" th:action="@{/profile}" th:object="${account}" method="post">
+                <div class="form-group">
+                  <input type="hidden" id="id" , name="id" th:field="*{id}" />
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input id="email" type="email" class="form-control" th:field="*{email}" aria-describedby="emailHelp"
+                    placeholder="Enter email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input id="password" type="password" class="form-control" th:field="*{password}"
+                    placeholder="Password">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput">First Name</label>
+                  <input id="firstname" type="text" class="form-control" th:field="*{firstname}"
+                    placeholder="First Name">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput">First Name</label>
+                  <input id="lastname" type="text" class="form-control" th:field="*{lastname}" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput">Age</label>
+                  <input id="age" type="number" th:field="*{age}" min="18" max="99" class="form-control"
+                    placeholder="Age" required />
+                  <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="alert alert-danger" role="alert">Age
+                    Error</p>
+                </div>
+                <div>
+                  <label for="formGroupExampleInput">Date Of Birth</label>
+                  <input id="date_of_birth" type="date" th:field="*{date_of_birth}" class="form-control"
+                    placeholder="Date of birth" required />
+                  <p th:if="${#fields.hasErrors('date_of_birth')}" th:errors="*{date_of_birth}"
+                    class="alert alert-danger" role="alert">date_of_birth Error</p>
+                </div>
+
+                <div>
+                  <label for="formGroupExampleInput">Gender</label>
+                  <select id="gender" name="gender" th:field="*{gender}" class="form-control">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                  </select>
+                  <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="alert alert-danger"
+                    role="alert">gender Error</p>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </section>
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <div th:replace="~{/fragments/footer :: footer}"></div>
+  <!-- End Footer -->
+
+</body>
+
+</html>

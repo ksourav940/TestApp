@@ -27,7 +27,7 @@ public class WebSecurityConfig {
          .permitAll()
        )
          .authorizeHttpRequests((authorize) -> authorize
-        .requestMatchers("/assets/**","/vendor/**", "/","/db-console/**","/db-console/*"
+        .requestMatchers("/assets/**","/resources/static/**", "/","/db-console/**","/db-console/*"
         ,"/register","/sample","/fragments/*").permitAll()
         .anyRequest().authenticated()
         )
@@ -35,6 +35,8 @@ public class WebSecurityConfig {
         .logoutUrl("/logout")
         .logoutSuccessUrl("/login")
         .permitAll())
+        .rememberMe((remember) -> remember
+        .rememberMeParameter("remember-me"))
         .csrf(csrf -> csrf.disable())
         .headers(headers -> headers.frameOptions().disable());
         return http.build();     

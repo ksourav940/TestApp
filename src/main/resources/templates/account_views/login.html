@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{/fragments/head :: head}"></div>
+
+
+<body>
+  <!-- ======= Header ======= -->
+  <div th:replace="~{/fragments/header :: header}"></div>
+  <!-- End Header -->
+
+  <main id="main">
+    <section id="featured-services" class="featured-services section-bg">
+      <div class="container">
+        <form th:action="@{/login}" th:method="post">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input id="email" type="email" name="email" class="form-control" aria-describedby="emailHelp"
+              placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div th:if="${param.error}">
+            Invalid username and password.
+          </div>
+          <div th:if="${param.logout}">
+            You have been logged out.
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" class="form-control" placeholder="Password">
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="remember-me" id="remember-me" name="remember-me">
+            <label class="form-check-label" for="remember-me">
+              Remember me
+            </label>
+            | <a th:href="@{/forgot-password}" class="link-secondary">Forgot password</a>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <div th:replace="~{/fragments/footer :: footer}"></div>
+  <!-- End Footer -->
+
+</body>
+
+</html>

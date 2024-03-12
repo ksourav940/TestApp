@@ -30,37 +30,34 @@
  <!-- End Header -->
   
   <main id="main">
-    <section class="breadcrumbs">
-      <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Test Page</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Test Page</li>
-          </ol>
-        </div>
-      </div>
-    </section>
     <section id="featured-services" class="featured-services section-bg">
       <div class="container">
         <div >
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Test Code</th>
-              <th scope="col">Test Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr  scope="row" class="tests" th:each="test : ${tests}">
-              <td th:text="${test.testCode}"/>
-              <td th:text="${test.testName}"/>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-      </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Test Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  scope="row" class="tests" th:each="test : ${listoftest}">
+                <td><a th:href="@{'/admin/' + ${test.testCode} + '/addQuestion'}"  th:text="${test.testName}">title</a></td> 
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <div>
+          <form th:method="post" 
+               th:action="@{/admin}"
+               th:object="${test}"
+               >
+          <div class="mb-3">
+            <!-- <label for="exampleInputEmail1" class="form-label">Test Name</label> -->
+            <input type="text" class="form-control" id="testName"  th:field="*{testName}"  placeholder="Test Name">
+          </div>
+          <button type="submit" class="btn btn-primary">Add Test</button>
+        </form>
+          </div>
     </section>
   </main>
   <!-- End #main -->

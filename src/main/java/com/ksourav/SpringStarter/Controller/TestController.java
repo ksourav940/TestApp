@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ksourav.SpringStarter.models.Test;
 import com.ksourav.SpringStarter.services.TestService;
@@ -22,13 +24,13 @@ public class TestController {
  @Autowired
  private TestService testService;
 
-@GetMapping("/test")
-public String gettest(Model model) {
+// @GetMapping("/test")
+// public String gettest(Model model) {
 
-      List<Test> tests = testService.getAll();
-        model.addAttribute("tests", tests);
-        return "test";
-}
+//       List<Test> tests = testService.getAll();
+//         model.addAttribute("tests", tests);
+//         return "test";
+// }
 
 @GetMapping("/test/{testCode}")
 public String getTestById(@PathVariable Long testCode, Model model) {
@@ -58,10 +60,11 @@ public String getTestById(@PathVariable Long testCode, Model model) {
 //   }
 // }
 
-//  @PostMapping("/testPanel/{testCode}")
-//  public String start_test(@PathVariable Long testCode,Model model) { 
-//      return "redirect:/testPanel";
-//  }
+ @PostMapping("/test/{testCode}")
+ public String start_test(@ModelAttribute Test test,Model model) {
+
+     return "redirect:/test/{testCode}";
+ }
 
 
    
