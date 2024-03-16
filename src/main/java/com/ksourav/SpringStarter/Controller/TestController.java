@@ -63,7 +63,7 @@ public String getTestById(@PathVariable Long testCode, Model model) {
  @PostMapping("/test/{testCode}")
  public String start_test(@ModelAttribute Test test,Model model) {
 
-     return "redirect:/test/{testCode}";
+     return "redirect:/testPanel/{testCode}";
  }
 
 

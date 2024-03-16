@@ -96,7 +96,6 @@ public class SeedData implements CommandLineRunner {
             test01.setTestFullMarks(10);
             test01.setTimeDuration("10");
             
-            // test01.setAccount(account01);
 
             testService.save(test01);
 
@@ -106,125 +105,9 @@ public class SeedData implements CommandLineRunner {
             test02.setNoOfQuestion(10);
             test02.setTestFullMarks(10);
             test02.setTimeDuration("10");
-            // test02.setAccount(account02);
 
             testService.save(test02);
 
-            List<Question> questions = questionService.getAll();
-            if (questions.size() == 0) {
-
-                Question question01 = new Question();
-                question01.setQuestionName("first question?");
-                question01.setOptionA("first option FOR FIRST");
-                question01.setOptionB("Second option FOR FIRST");
-                question01.setOptionC("third option");
-                question01.setOptionD("forth option");
-              //  question01.setCorrectAnswer("forth option");
-                // question01.setTest(test01);
-                questionService.save(question01);
-
-                Question question02 = new Question();
-                question02.setQuestionName("Second question?");
-                question02.setOptionA("first option FOR SECOND");
-                question02.setOptionB("Second option FOR SECOND");
-                question02.setOptionC("third option");
-                question02.setOptionD("forth option");
-            //    question02.setCorrectAnswer("forth option");
-
-                // question02.setTest(test01);
-                questionService.save(question02);
-
-                // Question question03 = new Question();
-                // question03.setQuestionName("third question");
-                // question03.setTest(test01);
-                // questionService.save(question03);
-
-                // Question question04 = new Question();
-                // question04.setQuestionName("Forth question");
-                // question04.setTest(test01);
-                // questionService.save(question04);
-
-                Question question05 = new Question();
-                question05.setQuestionName("first question");
-                question05.setOptionA("first option");
-                question05.setOptionB("Second option");
-                question05.setOptionC("third option");
-                question05.setOptionD("forth option");
-             //   question05.setCorrectAnswer("forth option");
-                // question05.setTest(test02);
-                questionService.save(question05);
-
-                Question question06 = new Question();
-                question06.setQuestionName("Second question");
-                question06.setOptionA("first option");
-                question06.setOptionB("Second option");
-                question06.setOptionC("third option");
-                question06.setOptionD("forth option");
-               //    question06.setCorrectAnswer("forth option");
-                // question06.setTest(test02);
-                questionService.save(question06);
-
-                // Question question07 = new Question();
-                // question07.setQuestionName("third question");
-                // question07.setTest(test02);
-                // questionService.save(question07);
-
-                // Question question08 = new Question();
-                // question08.setQuestionName("Forth question");
-                // question08.setTest(test02);
-                // questionService.save(question08);
-
-                // Qoption qoptionA = new Qoption();
-                // qoptionA.setOptionNumber(1);
-                // qoptionA.setOptionName("optionA");
-                // qoptionA.setQuestion(question01);
-                // qoptionService.save(qoptionA);
-
-                // Qoption qoptionB = new Qoption();
-                // qoptionB.setOptionNumber(2);
-                // qoptionB.setOptionName("optionB");
-                // qoptionB.setQuestion(question01);
-                // qoptionService.save(qoptionB);
-
-                // Qoption qoptionC = new Qoption();
-                // qoptionC.setOptionNumber(3);
-                // qoptionC.setOptionName("optionC");
-                // qoptionC.setQuestion(question01);
-                // qoptionService.save(qoptionC);
-
-                // Qoption qoptionD = new Qoption();
-                // qoptionD.setOptionNumber(4);
-                // qoptionD.setOptionName("optionD");
-                // qoptionD.setQuestion(question01);
-                // qoptionService.save(qoptionD);
-
-                // Qoption qoptionE = new Qoption();
-                // qoptionA.setOptionNumber(5);
-                // qoptionA.setOptionName("optionA");
-                // qoptionA.setQuestion(question02);
-                // qoptionService.save(qoptionA);
-
-                // Qoption qoptionF = new Qoption();
-                // qoptionB.setOptionNumber(6);
-                // qoptionB.setOptionName("optionB");
-                // qoptionB.setQuestion(question02);
-                // qoptionService.save(qoptionB);
-
-                // Qoption qoptionG = new Qoption();
-                // qoptionC.setOptionNumber(7);
-                // qoptionC.setOptionName("optionC");
-                // qoptionC.setQuestion(question02);
-                // qoptionService.save(qoptionC);
-
-                // Qoption qoptionH = new Qoption();
-                // qoptionD.setOptionNumber(8);
-                // qoptionD.setOptionName("optionD");
-                // qoptionD.setQuestion(question02);
-                // qoptionService.save(qoptionD);
-
-            }
-
-            // throw new UnsupportedOperationException("Unimplemented method 'run'");
         }
 
     }

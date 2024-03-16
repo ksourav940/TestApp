@@ -36,7 +36,8 @@ public class WebSecurityConfig {
         .logoutSuccessUrl("/login")
         .permitAll())
         .rememberMe((remember) -> remember
-        .rememberMeParameter("remember-me"))
+        .rememberMeParameter("remember-me")
+        .alwaysRemember(true))
         .csrf(csrf -> csrf.disable())
         .headers(headers -> headers.frameOptions().disable());
         return http.build();     

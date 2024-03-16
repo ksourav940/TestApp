@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<!-- <head th:replace="/fragments/head :: head"> -->
-<div th:replace="/fragments/head :: head"></div>
+<div th:replace="~{/fragments/head :: head}"></div>
 
 
 <body>
@@ -25,7 +24,7 @@
 
   <!-- ======= Header ======= -->
   <!-- <header th:replace="/fragments/header :: header"> -->
-  <div th:replace="/fragments/header :: header"></div>
+  <div th:replace="~{/fragments/header :: header}"></div>
 
   <!-- End Header -->
 
@@ -59,7 +58,6 @@
         </div>
         <div>
           <form action="#"
-         
           th:object="${test}"
           th:method="post">
             <button type="submit" class="btn btn-primary">Start Test</button>
@@ -68,25 +66,7 @@
       </div>
     </section>
   </main>
-  <!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <div th:replace="/fragments/footer :: footer"></div>
-  <!-- End Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
+  <div th:replace="~{/fragments/footer :: footer}"></div>
 </body>
 
 </html>
