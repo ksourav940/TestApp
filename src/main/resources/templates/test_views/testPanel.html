@@ -9,7 +9,7 @@
     <h1 class="logo me-auto"><a href="index.html">TestApp</a></h1>
     <!-- Uncomment below if you prefer to use an image logo -->
     <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-          <h2 class="logo me-auto" th:text="${test.testName}"></h2>
+    <h2 class="logo me-auto" th:text="${test.testName}"></h2>
 
 
     <nav id="navbar" class="navbar">
@@ -25,7 +25,7 @@
         </span>
 
         <span sec:authorize="isAuthenticated">
-          <li class="nav-link scrollto" ><a class="nav-link scrollto " href="/home">STOP</a></li>
+          <li class="nav-link scrollto"><a class="nav-link scrollto " href="/home">STOP</a></li>
         </span>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
@@ -36,16 +36,36 @@
 
 <body>
 
-  
-    <h5 class="text-center" >Question</h5>
-  
+
+  <h5 class="text-center">Question</h5>
+
 
 
   <main id="main">
     <section id="featured-services" class="featured-services section-bg">
       <div class="container">
-       
-       
+
+
+        <h3 th:text="${question.questionId} + '. ' + ${question.questionName}"></h3>
+        <form method="post" th:object="${sheet}" th:action="@{'/testPanel/'+${test.testCode}}">
+          <input type="hidden" id="testCode" , name="testCode" th:field="${test.testCode}" />
+          <input type="hidden" id="questionId" , name="questionId" th:field="${question.questionId}" />
+          <div class="form-group">
+            <input type="radio" id="html" name="selectedOption" value="A" th:field="*{selectedOption}">
+            <label for="html">A</label><br>
+            <input type="radio" id="css" name="selectedOption" value="B" th:field="*{selectedOption}">
+            <label for="css">B</label><br>
+            <input type="radio" id="javascript" name="selectedOption" value="C" th:field="*{selectedOption}">
+            <label for="javascript">C</label><BR>
+            <input type="radio" id="javascript" name="selectedOption" value="D" th:field="*{selectedOption}">
+            <label for="javascript">D</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Save and Next</button>
+        </form>
+
+
+
+
 
       </div>
     </section>

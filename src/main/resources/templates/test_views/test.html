@@ -60,6 +60,8 @@
           <form action="#"
           th:object="${test}"
           th:method="post">
+          <input type="hidden" id="testCode" , name="testCode" th:field="${test.testCode}" />
+          <input type="hidden" id="questionId" , name="questionId" th:field="${question.questionId}" />
             <button type="submit" class="btn btn-primary">Start Test</button>
           </form>
         </div>

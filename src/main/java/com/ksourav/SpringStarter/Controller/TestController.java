@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.ksourav.SpringStarter.models.Question;
 import com.ksourav.SpringStarter.models.Test;
 import com.ksourav.SpringStarter.services.TestService;
 
@@ -39,6 +40,11 @@ public String getTestById(@PathVariable Long testCode, Model model) {
   if(optionalTest.isPresent()){
     Test test = optionalTest.get();
     model.addAttribute("test", test);
+    List<Question> questions = test.getQuestions();
+    Question question = questions.get(0);
+    System.out.println(question);
+    model.addAttribute("question", question);
+  
     return "test_views/test";
 
   }else{
@@ -61,9 +67,17 @@ public String getTestById(@PathVariable Long testCode, Model model) {
 // }
 
  @PostMapping("/test/{testCode}")
- public String start_test(@ModelAttribute Test test,Model model) {
+ public String start_test(@ModelAttribute Test test,@ModelAttribute Question question,Model model) {
+    if(test != null && question != null){
 
-     return "redirect:/testPanel/{testCode}";
+    //  Long testCode = test.getTestCode();
+      Long questionId = question.getQuestionId();
+      return "redirect:/testPanel/{testCode}/question/"+questionId;
+    }else 
+    return "redirect:/error";
+
+
+     
  }
 
 

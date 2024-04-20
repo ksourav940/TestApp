@@ -19,8 +19,13 @@ public class Question {
      @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long questionId;
 
+  
     private String questionName;
  
-  
+    
+    @Override
+    public String toString() {
+        return "Question [questionId=" + questionId + ", questionName=" + questionName + "]";
+    }
 
 }

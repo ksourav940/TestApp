@@ -87,6 +87,34 @@ public class SeedData implements CommandLineRunner {
         accountService.save(account03);
         accountService.save(account04);
 
+        List<Question> questions = questionService.getAll();
+        if(questions.size() == 0){
+            Question question1 = new Question();
+            question1.setQuestionName("who is the prime minister of india?");
+            questions.add(question1);
+
+            Question question2 = new Question();
+            question2.setQuestionName("who is the finence minister of india?");
+            questions.add(question2);
+
+
+            Question question3 = new Question();
+            question3.setQuestionName("who is the Rail Minister of india?");
+            questions.add(question3);
+
+            Question question4 = new Question();
+            question4.setQuestionName("what is the capital of india?");
+            questions.add(question4);
+
+            Question question5 = new Question();
+            question5.setQuestionName("who is the first prime minister of india?");
+            questions.add(question5);
+
+            Question question6 = new Question();
+            question6.setQuestionName("who is the current president of india of india?");
+            questions.add(question6);
+        }
+
         List<Test> tests = testService.getAll();
         if (tests.size() == 0) {
             Test test01 = new Test();
@@ -95,6 +123,7 @@ public class SeedData implements CommandLineRunner {
             test01.setNoOfQuestion(10);
             test01.setTestFullMarks(10);
             test01.setTimeDuration("10");
+            test01.setQuestions(questions);
             
 
             testService.save(test01);
