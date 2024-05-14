@@ -91,27 +91,51 @@ public class SeedData implements CommandLineRunner {
         if(questions.size() == 0){
             Question question1 = new Question();
             question1.setQuestionName("who is the prime minister of india?");
+            question1.setOptionA("Narendra Modi");
+            question1.setOptionB("Rahul Gandhi");
+            question1.setOptionC("kapil sibal");
+            question1.setOptionD("Hament Soren");
             questions.add(question1);
 
             Question question2 = new Question();
             question2.setQuestionName("who is the finence minister of india?");
+            question2.setOptionA("Nirmala Sita Raman");
+            question2.setOptionB("Raghuram Rajan");
+            question2.setOptionC("Manmohan shing");
+            question2.setOptionD("Hament Soren");
             questions.add(question2);
 
 
             Question question3 = new Question();
             question3.setQuestionName("who is the Rail Minister of india?");
+            question3.setOptionA("Nirmala Sita Raman");
+            question3.setOptionB("Raghuram Rajan");
+            question3.setOptionC("Manmohan shing");
+            question3.setOptionD("Hament Soren");
             questions.add(question3);
 
             Question question4 = new Question();
             question4.setQuestionName("what is the capital of india?");
+            question4.setOptionA("Nirmala Sita Raman");
+            question4.setOptionB("Raghuram Rajan");
+            question4.setOptionC("Manmohan shing");
+            question4.setOptionD("Hament Soren");
             questions.add(question4);
 
             Question question5 = new Question();
             question5.setQuestionName("who is the first prime minister of india?");
+            question5.setOptionA("Nirmala Sita Raman");
+            question5.setOptionB("Raghuram Rajan");
+            question5.setOptionC("Manmohan shing");
+            question5.setOptionD("Hament Soren");
             questions.add(question5);
 
             Question question6 = new Question();
             question6.setQuestionName("who is the current president of india of india?");
+            question6.setOptionA("Nirmala Sita Raman");
+            question6.setOptionB("Raghuram Rajan");
+            question6.setOptionC("Manmohan shing");
+            question6.setOptionD("Hament Soren");
             questions.add(question6);
         }
 

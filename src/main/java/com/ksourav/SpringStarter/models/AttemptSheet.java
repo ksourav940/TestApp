@@ -20,11 +20,15 @@ public class AttemptSheet {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long testAttemptId;
 
-   // private Date testStartTime;
-
-   // private Date testEndTime;
+    private Long sheetId;
 
     private Long TestCode;
+
+    private Long userCode;
+
+    private Date start_time;
+
+    private Date end_time;
 
     private Long questionId;
 

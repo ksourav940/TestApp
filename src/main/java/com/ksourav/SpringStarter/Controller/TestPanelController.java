@@ -28,6 +28,8 @@ import com.ksourav.SpringStarter.services.TestService;
 import com.ksourav.dto.CreateAnswerDto;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class TestPanelController {
@@ -46,93 +48,112 @@ public class TestPanelController {
 
   @GetMapping("/testPanel/{testCode}/question/{questionId}")
   @PreAuthorize("isAuthenticated()")
-  public String startTest(@PathVariable Long testCode,@PathVariable Long questionId, Model model, Principal principal) {
-    
+  public String startTest(@PathVariable Long testCode, @PathVariable Long questionId, Model model,
+      Principal principal) {
+
     String authuser = "email";
-    if(principal != null){
+    if (principal != null) {
       authuser = principal.getName();
     }
 
     Optional<Account> optionalAccount = accountService.findOneByEmail(authuser);
-    
-    if(optionalAccount.isPresent()){
+
+    if (optionalAccount.isPresent()) {
       Account account = optionalAccount.get();
       model.addAttribute("account", account);
       model.addAttribute("profilephoto", account.getPhoto());
       Optional<Test> optionalTest = testService.getById(testCode);
-      
 
       if (optionalTest.isPresent()) {
         Test test = optionalTest.get();
         model.addAttribute("test", test);
         List<Question> questions = test.getQuestions();
-       
-        for(Question ques : questions) { 
-          if(ques.getQuestionId() == (questionId)) { 
-            
+
+        for (Question ques : questions) {
+          if (ques.getQuestionId() == (questionId)) {
+
             System.out.println(ques);
             model.addAttribute("question", ques);
           }
-       }
-         
+        }
+        Optional<AttemptSheet> optionalSheet = testPanelService.getAttemptSheetByQuestionId(questionId);
+        if (optionalSheet.isPresent()) {
+          AttemptSheet attemptSheet = optionalSheet.get();
+          model.addAttribute("sheet", attemptSheet);
+        } else {
           AttemptSheet attemptSheet = new AttemptSheet();
           model.addAttribute("sheet", attemptSheet);
+        }
 
-        
-       
-        
         return "test_views/testPanel";
       } else {
         return "404";
       }
-    }else{
+    } else {
       return "redirect:/?error";
     }
 
-   
   }
 
   @PostMapping("/testPanel/{testCode}")
-  public String start_Test(@ModelAttribute AttemptSheet sheet,Model model) {
+  public String start_Test(@ModelAttribute AttemptSheet sheet, Model model) {
 
-   
-    if(sheet != null){
+    if (sheet != null) {
       System.out.println(sheet);
       Long testCode = sheet.getTestCode();
       Long questionId = sheet.getQuestionId();
+      Long userCode   = sheet.getUserCode();
       System.out.println(testCode);
-      AttemptSheet addSheet = new AttemptSheet();
-      addSheet.setTestCode(sheet.getTestCode());
-      addSheet.setQuestionId(sheet.getQuestionId());
-      addSheet.setSelectedOption(sheet.getSelectedOption());
-      testPanelService.save(addSheet);
-     Optional<Test> optionalTest = testService.getById(testCode);
-     Test test = optionalTest.get();
-     List<Question> questionList = test.getQuestions();
-     Question question1 = new Question();
-     for(Question ques : questionList) { 
-      if(ques.getQuestionId() == (questionId)) { 
-        question1 = ques;
+      Optional<AttemptSheet> optionalSheet = testPanelService.getAttemptSheetByQuestionId(questionId);
+      if (optionalSheet.isPresent()) {
+        AttemptSheet addSheet = optionalSheet.get();
+        addSheet.setTestCode(sheet.getTestCode());
+        addSheet.setQuestionId(sheet.getQuestionId());
+        addSheet.setUserCode(sheet.getUserCode());
+        addSheet.setSelectedOption(sheet.getSelectedOption());
+        testPanelService.save(addSheet);
+      } else {
+        AttemptSheet addSheet = new AttemptSheet();
+        addSheet.setTestCode(sheet.getTestCode());
+        addSheet.setQuestionId(sheet.getQuestionId());
+        addSheet.setUserCode(sheet.getUserCode());
+        addSheet.setSelectedOption(sheet.getSelectedOption());
+        testPanelService.save(addSheet);
       }
-   }
 
-   int index = questionList.indexOf(question1);
-   if (index >= 0 && index < questionList.size() - 1) {
-    // Get the next object
-    Question nextQuestion = questionList.get(index + 1);
-    Long nextQuestionId = nextQuestion.getQuestionId();
-    return "redirect:/testPanel/"+ testCode +"/question/"+ nextQuestionId;
+      Optional<Test> optionalTest = testService.getById(testCode);
+      Test test = optionalTest.get();
+      List<Question> questionList = test.getQuestions();
+      Question question1 = new Question();
+      for (Question ques : questionList) {
+        if (ques.getQuestionId() == (questionId)) {
+          question1 = ques;
+        }
+      }
+      int index = questionList.indexOf(question1);
+      if (index >= 0 && index < questionList.size() - 1) {
+        // Get the next object
+        Question nextQuestion = questionList.get(index + 1);
+        Long nextQuestionId = nextQuestion.getQuestionId();
+        return "redirect:/testPanel/" + testCode + "/question/" + nextQuestionId;
+      } else {
+        Long firstQuestionId = questionList.get(0).getQuestionId();
+        return "redirect:/testPanel/" + testCode + "/question/" + firstQuestionId;
+      }
     } else {
-      Long firstQuestionId = questionList.get(0).getQuestionId();
-      return "redirect:/testPanel/"+ testCode +"/question/"+ firstQuestionId;
-    } 
-        
-    }else {
       return "redirect:/?error";
     }
+  }
 
-    
+  @GetMapping("/submit_test")
+  public String submit_tests(Model model) {
+      return "test_views/submit_test";
+  }
+  
+  @PostMapping("/submit_test")
+  public String submit_test(){
 
+    return "redirect:/submit_test";
   }
 
 }

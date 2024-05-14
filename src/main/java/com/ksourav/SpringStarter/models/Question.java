@@ -21,6 +21,16 @@ public class Question {
 
   
     private String questionName;
+
+    private String optionA;
+
+    private String optionB;
+
+    private String optionC;
+
+    private String optionD;
+
+    
  
     
     @Override

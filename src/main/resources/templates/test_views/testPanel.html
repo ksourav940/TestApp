@@ -50,17 +50,21 @@
         <form method="post" th:object="${sheet}" th:action="@{'/testPanel/'+${test.testCode}}">
           <input type="hidden" id="testCode" , name="testCode" th:field="${test.testCode}" />
           <input type="hidden" id="questionId" , name="questionId" th:field="${question.questionId}" />
+          <input type="hidden" id="userCode" , name="id" th:field="${account.id}" />
           <div class="form-group">
             <input type="radio" id="html" name="selectedOption" value="A" th:field="*{selectedOption}">
-            <label for="html">A</label><br>
+            <label for="html" th:text="${question.optionA}">A</label><br>
             <input type="radio" id="css" name="selectedOption" value="B" th:field="*{selectedOption}">
-            <label for="css">B</label><br>
+            <label for="css" th:text="${question.optionB}">B</label><br>
             <input type="radio" id="javascript" name="selectedOption" value="C" th:field="*{selectedOption}">
-            <label for="javascript">C</label><BR>
+            <label for="javascript" th:text="${question.optionC}">C</label><BR>
             <input type="radio" id="javascript" name="selectedOption" value="D" th:field="*{selectedOption}">
-            <label for="javascript">D</label>
+            <label for="javascript" th:text="${question.optionD}">D</label>
           </div>
           <button type="submit" class="btn btn-primary">Save and Next</button>
+        </form>
+        <form method="post" th:action="@{'/submit_test'}" >
+          <button type="submit" class="btn btn-primary">submit</button>
         </form>
 
 
