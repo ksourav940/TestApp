@@ -100,10 +100,10 @@ public class TestPanelController {
 
     if (sheet != null) {
       System.out.println(sheet);
-      Long testCode = sheet.getTestCode();
+      Long testCode =   sheet.getTestCode();
       Long questionId = sheet.getQuestionId();
       Long userCode   = sheet.getUserCode();
-      System.out.println(testCode);
+      System.out.println(testCode +" "+ userCode+ " "+questionId);
       Optional<AttemptSheet> optionalSheet = testPanelService.getAttemptSheetByQuestionId(questionId);
       if (optionalSheet.isPresent()) {
         AttemptSheet addSheet = optionalSheet.get();

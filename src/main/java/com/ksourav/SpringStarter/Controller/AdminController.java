@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.ksourav.SpringStarter.models.Qoption;
 import com.ksourav.SpringStarter.models.Question;
 import com.ksourav.SpringStarter.models.Test;
 import com.ksourav.SpringStarter.services.AdminService;

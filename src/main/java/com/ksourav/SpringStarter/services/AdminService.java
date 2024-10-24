@@ -6,10 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ksourav.SpringStarter.models.Qoption;
+
 import com.ksourav.SpringStarter.models.Question;
 import com.ksourav.SpringStarter.models.Test;
-import com.ksourav.SpringStarter.repository.QoptionRepository;
 import com.ksourav.SpringStarter.repository.QuestionRepository;
 import com.ksourav.SpringStarter.repository.TestRepository;
 
@@ -22,8 +21,6 @@ public class AdminService {
     @Autowired
     private QuestionRepository questionRepository;
 
-    @Autowired
-    private QoptionRepository qoptionRepository;
 
     public Optional<Test> getById(long id){
         return testRepository.findById(id);
@@ -53,15 +50,6 @@ public class AdminService {
         return  questionRepository.save(question);
      }
 
-     public void saveQoption(Qoption _qoption) {
-        if(_qoption.equals(null)){
-            throw new UnsupportedOperationException("Unimplemented method 'saveQoption'");
-        }else{
-             qoptionRepository.save(_qoption);
-        }
-       
-
-    }
 
     public void updateTest(Long id) {
         // throw new UnsupportedOperationException("Unimplemented method 'updateTest'");
